@@ -42,4 +42,12 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.OneToOne"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Basic"/>
+    <fullyQualifiedTypeName name="JPA.OneToOne.entity.Adresse"/>
+    <fullyQualifiedTypeName name="JPA.OneToOne.entity.Personne"/>
+    <fullyQualifiedTypeName name="JPA.OneToOne.dao.PersonneDAO"/>
+    <fullyQualifiedTypeName name="JPA.OneToOne.dao.DAOUtil"/>
 </qualifiedTypeNameHistroy>

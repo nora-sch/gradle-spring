@@ -1,0 +1,39 @@
+package fr.eni.jpa.methode2.entity;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+
+public class PersonnePK implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	@Column(name = "NOM", nullable = false, length = 50)
+	private String nom;
+	
+	@Column(name = "PRENOM", nullable = false, length = 50)
+	private String prenom;
+	
+	public PersonnePK() {
+		
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+
+}

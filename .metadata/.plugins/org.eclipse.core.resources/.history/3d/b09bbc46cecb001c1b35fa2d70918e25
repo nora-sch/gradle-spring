@@ -1,0 +1,17 @@
+package fr.eni.jpa.methode1.entity;
+
+import java.io.Serializable;
+
+public class PersonnePK implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	private String nom;
+	private String prenom;
+	
+	public PersonnePK() {
+		
+	}
+
+
+}

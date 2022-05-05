@@ -1,0 +1,5 @@
+package JPA.TP1.GestionDeLivres;
+
+public class DAOException extends Exception {
+
+}

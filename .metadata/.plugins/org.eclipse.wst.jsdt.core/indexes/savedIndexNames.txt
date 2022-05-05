@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\ProjetGradleTest\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3169577788.index
+82610940.index
+2374615663.index
+2889965965.index
+3402123137.index
+3730211939.index

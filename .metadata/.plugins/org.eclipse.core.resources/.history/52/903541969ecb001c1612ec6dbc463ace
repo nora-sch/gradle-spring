@@ -1,0 +1,36 @@
+package JPA.TP1.GestionDeLivres;
+
+import java.util.GregorianCalendar;
+import java.util.List;
+
+import JPA.TP1.GestionDeLivres.entity.Livre;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+public class TestJPALivre {
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
+		
+		Livre l1 = new Livre("Emile Zola", "La bête humaine", 450); 
+		System.out.println(l1);
+		Livre l2 = new Livre("JP Sartre", "Huis Clos", 350); 
+		System.out.println(l2);
+		Livre l3 = new Livre("Albert Camus", "L'étranger", 476); 
+		System.out.println(l3);
+		Livre l4 = new Livre("Albert Camus", "La Peste", 276); 
+		System.out.println(l4);
+		
+		
+		
+	//	String requete = "FROM Livre p";
+	//	List<Livre> listeL = em.createQuery(requete).getResultList();
+		
+	/*	System.out.println("Liste des Livres : ");
+		for(Livre livre: listeL) {
+			System.out.println(livre);
+		}
+		*/
+
+	}
+}

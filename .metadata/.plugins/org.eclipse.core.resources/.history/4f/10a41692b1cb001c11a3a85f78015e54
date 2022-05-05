@@ -1,0 +1,50 @@
+package JPA.TP1.GestionDeLivres;
+
+import java.util.List;
+
+import JPA.TP1.GestionDeLivres.dao.LivreDAO;
+import JPA.TP1.GestionDeLivres.entity.Livre;
+
+
+public class TestJPALivre extends LivreDAO{
+	
+	public static void main(String[] args) throws DAOException {
+		
+		LivreDAO livreDao = new LivreDAO();
+		
+		System.out.println("Création de 4 livres :");
+		Livre l1 = new Livre("Emile Zola", "La bête humaine", 450); 
+		System.out.println(l1);
+		Livre l2 = new Livre("JP Sartre", "Huis Clos", 350); 
+		System.out.println(l2);
+		Livre l3 = new Livre("Albert Camus", "L'étranger", 476); 
+		System.out.println(l3);
+		Livre l4 = new Livre("Albert Camus", "La Peste", 276); 
+		System.out.println(l4);
+		
+		 try {
+			 	insert(l1);
+				insert(l2);
+				insert(l3);
+				insert(l4); 
+		 }catch(DAOException e) {
+			 System.out.println(e.getMessage());
+		 }
+		 
+		 List<Livre> liste = livreDAO.findAll();
+		
+		
+		
+	//	String requete = "FROM Livre p";
+	//	List<Livre> listeL = em.createQuery(requete).getResultList();
+		
+	/*	System.out.println("Liste des Livres : ");
+		for(Livre livre: listeL) {
+			System.out.println(livre);
+		}
+		*/
+
+	}
+
+	
+}

@@ -1,0 +1,38 @@
+package JPA.TP1.GestionDeLivres.dao;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import JPA.TP1.GestionDeLivres.DAOException;
+import JPA.TP1.GestionDeLivres.entity.Livre;
+import jakarta.persistence.EntityManager;
+
+
+public class LivreDAO extends DAOUtil{
+	
+	public void insert(Livre livre) throws DAOException{
+		if(livre==null) {
+			DAOException businessException = new DAOException();
+			throw businessException;
+		}
+		EntityManager em = getEntityManager();
+		try {
+				em.persist(livre);
+		em.getTransaction().commit();
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+			em.getTransaction().rollback();
+			throw e;
+		}
+		close();
+	};
+
+	List<Livre> findAll() throws DAOException{
+		
+	};
+
+	List<Livre> selectByDate(LocalDate dateRecherchee) throws DAOException{
+		
+	};
+}

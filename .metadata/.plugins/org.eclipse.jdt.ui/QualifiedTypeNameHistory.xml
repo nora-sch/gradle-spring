@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.persistence.IdClass"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
-    <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
-    <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
-    <fullyQualifiedTypeName name="fr.eni.jpa.methode1.entity.Personne"/>
-    <fullyQualifiedTypeName name="fr.eni.jpa.methode1.entity.PersonnePK"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.EmbeddedId"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
-    <fullyQualifiedTypeName name="JPA.OneToOne.entity.Adresse"/>
-    <fullyQualifiedTypeName name="JPA.OneToOne.entity.Personne"/>
-    <fullyQualifiedTypeName name="JPA.OneToOne.dao.PersonneDAO"/>
-    <fullyQualifiedTypeName name="JPA.OneToOne.dao.DAOUtil"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Basic"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.OneToOne"/>
-    <fullyQualifiedTypeName name="JPA.OneToOne.Bi.dao.PersonneDAO"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.Bi.entity.Personne"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.Bi.dao.DAOUtil"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.Bi.entity.Adresse"/>
@@ -57,7 +37,27 @@
     <fullyQualifiedTypeName name="JPA.ManyToMany.entity.Pays"/>
     <fullyQualifiedTypeName name="JPA.ManyToMany.dao.PaysDAO"/>
     <fullyQualifiedTypeName name="JPA.ManyToMany.dao.PersonneDAO"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="JPA.ManyToMany.entity.Personne"/>
     <fullyQualifiedTypeName name="JPA.ManyToMany.dao.DAOUtil"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Inheritance"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.InheritanceType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.DiscriminatorColumn"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.DiscriminatorValue"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.exception.DAOException"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.single.Berline"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.single.VoitureDeCourse"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.single.Voiture"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.dao.DAOUtil"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.tableperclass.Voiture"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.tableperclass.Berline"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.tableperclass.VoitureDeCourse"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.joined.Voiture"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.joined.Berline"/>
+    <fullyQualifiedTypeName name="JPA.Heritage.entity.joined.VoitureDeCourse"/>
 </qualifiedTypeNameHistroy>

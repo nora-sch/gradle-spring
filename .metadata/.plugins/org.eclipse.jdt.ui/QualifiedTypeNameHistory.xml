@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="fr.eni.jpa.entity.User"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.EntityManagerFactory"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Persistence"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
-    <fullyQualifiedTypeName name="JPA.PremierExemple.entity.User"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.TemporalType"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Temporal"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Transient"/>
-    <fullyQualifiedTypeName name="JPA.Annotations.entity.Personne"/>
-    <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="JPA.TP1.GestionDeLivres.entity.Livre"/>
     <fullyQualifiedTypeName name="jakarta.persistence.EntityManager"/>
     <fullyQualifiedTypeName name="JPA.TP1.GestionDeLivres.dao.DAOUtil"/>
     <fullyQualifiedTypeName name="JPA.TP1.GestionDeLivres.dao.LivreDAO"/>
     <fullyQualifiedTypeName name="JPA.TP1.GestionDeLivres.DAOException"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Table"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
@@ -30,7 +16,6 @@
     <fullyQualifiedTypeName name="java.beans.Transient"/>
     <fullyQualifiedTypeName name="javax.persistence.Transient"/>
     <fullyQualifiedTypeName name="javax.persistence.IdClass"/>
-    <fullyQualifiedTypeName name="java.io.Serializable"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManagerFactory"/>
     <fullyQualifiedTypeName name="javax.persistence.Persistence"/>
     <fullyQualifiedTypeName name="javax.persistence.EntityManager"/>
@@ -42,7 +27,6 @@
     <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GenerationType"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.entity.Adresse"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.entity.Personne"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.dao.PersonneDAO"/>
@@ -55,4 +39,25 @@
     <fullyQualifiedTypeName name="JPA.OneToOne.Bi.dao.DAOUtil"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.Bi.entity.Adresse"/>
     <fullyQualifiedTypeName name="JPA.OneToOne.Bi.dao.AdresseDAO"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.FetchType"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.dao.PersonneDAO"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.dao.AdresseDAO"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.entity.Personne"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.entity.Adresse"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.dao.DAOUtil"/>
+    <fullyQualifiedTypeName name="org.hibernate.internal.build.AllowSysOut"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.exception.DAOException"/>
+    <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.exception.DAOException"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.entity.Adresse"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.dao.PersonneDAO"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.dao.AdresseDAO"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.dao.DAOUtil"/>
+    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.entity.Personne"/>
 </qualifiedTypeNameHistroy>

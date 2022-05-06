@@ -1,12 +1,11 @@
-package JPA.Heritage.entity.single;
+package JPA.Heritage.entity.tableperclass;
 
-
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 
-@Entity
-@DiscriminatorValue(value="C")
+@Entity(name="TPCVoitureDeCourseEntity")
+@Table(name="TPCVoitureDeCourse")
 public class VoitureDeCourse extends Voiture {
 
 private String ecurie;

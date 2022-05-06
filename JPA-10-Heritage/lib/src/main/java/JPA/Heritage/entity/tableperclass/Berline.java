@@ -1,10 +1,10 @@
-package JPA.Heritage.entity.single;
+package JPA.Heritage.entity.tableperclass;
 
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-@Entity
-@DiscriminatorValue(value="B")
+@Entity(name="TPCBerlineEntity")
+@Table(name="TPCBerline")
 public class Berline extends Voiture{
 	
 	private String couleurCuir;

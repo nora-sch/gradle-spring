@@ -58,6 +58,7 @@ public class TestPersonne {
 	    // tentative de sauvegarde de l'adresse
 	    try {
 			aDao.add(a24);
+			System.out.println("INSERT ADRESSE AVEC PERSONNE");
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

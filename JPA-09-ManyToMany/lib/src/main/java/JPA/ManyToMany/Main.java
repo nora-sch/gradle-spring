@@ -75,6 +75,19 @@ public class Main {
 			System.out.println(p);
 		}
 		
+		try {
+			PersonneDAO.delete(p1);
+			PersonneDAO.delete(p2);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("\nListe des personnes en base après suppression des personnes");
+		listeP = PersonneDAO.findAll();
+		for(Personne p : listeP) {
+			System.out.println(p);
+		}
+		
 		System.out.println("\nListe des Pays : ");
 		List<Pays> listePays = PaysDAO.findAll();
 		for(Pays pays : listePays) {

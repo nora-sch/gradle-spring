@@ -34,6 +34,7 @@ public class TestPersonne {
 		try {
 			aDao.delete(a1);
 			System.out.println("Adresse : ["+a1+"]" + " a été suprimé!");
+			System.out.println("DELETE ADRESSE ET LA PERSONNE QUI A CETTE ADRESSE");
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("echec supression");

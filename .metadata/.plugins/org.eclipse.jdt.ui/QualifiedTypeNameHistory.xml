@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="JPA.OneToMany.dao.PersonneDAO"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.dao.AdresseDAO"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.entity.Personne"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.entity.Adresse"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.dao.DAOUtil"/>
-    <fullyQualifiedTypeName name="org.hibernate.internal.build.AllowSysOut"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.OneToMany"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.exception.DAOException"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.exception.DAOException"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.entity.Adresse"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.dao.PersonneDAO"/>
-    <fullyQualifiedTypeName name="JPA.OneToMany.Bi.dao.AdresseDAO"/>
     <fullyQualifiedTypeName name="JPA.OneToMany.Bi.dao.DAOUtil"/>
     <fullyQualifiedTypeName name="JPA.OneToMany.Bi.entity.Personne"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
     <fullyQualifiedTypeName name="JPA.ManyToOne.exceptions.DAOException"/>
     <fullyQualifiedTypeName name="JPA.ManyToOne.dao.CiviliteDAO"/>
     <fullyQualifiedTypeName name="JPA.ManyToOne.entity.Civilite"/>
@@ -31,8 +18,6 @@
     <fullyQualifiedTypeName name="JPA.ManyToMany.entity.Personne"/>
     <fullyQualifiedTypeName name="JPA.ManyToMany.dao.DAOUtil"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Inheritance"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
     <fullyQualifiedTypeName name="jakarta.persistence.InheritanceType"/>
     <fullyQualifiedTypeName name="jakarta.persistence.DiscriminatorColumn"/>
     <fullyQualifiedTypeName name="jakarta.persistence.DiscriminatorValue"/>
@@ -60,4 +45,19 @@
     <fullyQualifiedTypeName name="JPA.CollectionEnBase.entity.Personne"/>
     <fullyQualifiedTypeName name="JPA.CollectionEnBase.dao.DAOUtil"/>
     <fullyQualifiedTypeName name="JPA.CollectionEnBase.dao.PersonneDAO"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.ManyToOne"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.NamedQueries"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.NamedQuery"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.TypedQuery"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.EntityManager"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.Query"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Query"/>
+    <fullyQualifiedTypeName name="JPA.JPQL.exception.DAOException"/>
+    <fullyQualifiedTypeName name="JPA.JPQL.entity.Civilite"/>
+    <fullyQualifiedTypeName name="JPA.JPQL.dao.CiviliteDAO"/>
+    <fullyQualifiedTypeName name="JPA.JPQL.entity.Personne"/>
+    <fullyQualifiedTypeName name="JPA.JPQL.dao.PersonneDAO"/>
+    <fullyQualifiedTypeName name="JPA.JPQL.dao.DAOUtil"/>
 </qualifiedTypeNameHistroy>

@@ -2,6 +2,8 @@ package fr.eni.movielibrary;
 
 import java.util.List;
 
+import fr.eni.movielibrary.bo.Movie;
+import fr.eni.movielibrary.mmi.controller.MovieController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +13,7 @@ public class MovieLibraryApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = SpringApplication.run(MovieLibraryApplication.class, args);
-/*
+
 		MovieController movieBean = context.getBean("movieBean", MovieController.class);
 
 		// Affichage du premier film
@@ -25,7 +27,7 @@ public class MovieLibraryApplication {
 		for (Movie movie : lstMovies) {
 			System.out.println(movie);
 		}
-		*/
+
  	}
 
 

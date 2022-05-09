@@ -43,6 +43,6 @@ public class Participant {
 
     @Override
     public String toString() {
-        return "Participant - "+id+" : [firstName=" + firstName + ", lastName=" + lastName + "]";
+        return firstName + " "+ lastName+" [id="+id+"]";
     }
 }

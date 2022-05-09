@@ -103,6 +103,6 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie - "+id+" : [title=" + title + ", year=" + year + ", \nduration=" + duration + ", \nsynopsis=" + synopsis +", \ndirector=" + director+", \nactors=" + actors+", \ngenre=" + genre +"]";
+        return "Movie [id="+id+"]\ntitle : " + title + " [year : " + year + ", duration : " + duration + "] \nSynopsis : " + synopsis +" \nDirector : " + director+" \nActors : " + actors+" \ngenre : " + genre;
     }
 }

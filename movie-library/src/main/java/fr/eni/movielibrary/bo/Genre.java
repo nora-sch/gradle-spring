@@ -33,6 +33,6 @@ public class Genre {
 
     @Override
     public String toString() {
-        return "Genre - "+id+" : [label=" + label + "]";
+        return  label + "[id="+id+"]";
     }
 }

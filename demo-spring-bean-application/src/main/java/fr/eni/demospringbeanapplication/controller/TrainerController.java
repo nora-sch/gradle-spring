@@ -11,14 +11,23 @@ import java.util.List;
 public class TrainerController {
     private TrainerService trainerService;
 
+    // injection dependance par constructeur
+    @Autowired
+    public TrainerController(TrainerService trainerService){
+        System.out.println("Appel du construteur TrainerController");
+        this.trainerService = trainerService;
+    }
     public void showAllTrainers() {
         List<Trainer> lstTrainers = trainerService.findAll();
         System.out.println(lstTrainers);
     }
+
+    /*
+    // injection dependance par setter
     @Autowired
     public void setTrainerService(TrainerService trainerService) {
         System.out.println("Appel de setTrainerService");
         this.trainerService = trainerService;
-    }
+    }*/
 
 }

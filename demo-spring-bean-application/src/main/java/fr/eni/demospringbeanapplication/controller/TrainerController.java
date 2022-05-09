@@ -3,6 +3,7 @@ package fr.eni.demospringbeanapplication.controller;
 import fr.eni.demospringbeanapplication.bll.TrainerService;
 import fr.eni.demospringbeanapplication.bo.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class TrainerController {
 
     // injection dependance par constructeur
     @Autowired
-    public TrainerController(TrainerService trainerService){
+    public TrainerController(@Qualifier("trainerServiceImpl")TrainerService trainerService){
         System.out.println("Appel du construteur TrainerController");
         this.trainerService = trainerService;
     }

@@ -9,14 +9,16 @@ import java.util.List;
 
 @Component
 public class TrainerController {
+    @Autowired
     private TrainerService trainerService;
-
+    /*
     // injection dependance par constructeur
     @Autowired
     public TrainerController(TrainerService trainerService){
         System.out.println("Appel du construteur TrainerController");
         this.trainerService = trainerService;
     }
+    */
     public void showAllTrainers() {
         List<Trainer> lstTrainers = trainerService.findAll();
         System.out.println(lstTrainers);

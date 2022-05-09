@@ -1,11 +1,11 @@
-package fr.eni.jpa.jpa13criteriaspring.entity;
+package fr.eni.jpa.jpa13criteriaspringgradle.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="CiviliteMTO")
+@Table(name="CiviliteMTOSpring")
 public class Civilite{
 
 

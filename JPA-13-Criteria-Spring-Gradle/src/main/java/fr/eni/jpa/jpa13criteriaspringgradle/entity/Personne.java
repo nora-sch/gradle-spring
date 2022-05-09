@@ -1,14 +1,9 @@
-package fr.eni.jpa.jpa13criteriaspring.entity;
+package fr.eni.jpa.jpa13criteriaspringgradle.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="PersonneMTO")
+@Table(name="PersonneMTOSpring")
 public class Personne{
 
 

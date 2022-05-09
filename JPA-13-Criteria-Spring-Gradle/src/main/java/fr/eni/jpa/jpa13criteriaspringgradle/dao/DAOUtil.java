@@ -1,17 +1,20 @@
-package fr.eni.jpa.jpa13criteriaspring.dao;
+package fr.eni.jpa.jpa13criteriaspringgradle.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 public class DAOUtil {
 		
-		private static EntityManagerFactory emf;
-		private static EntityManager em;
+	//private static EntityManagerFactory emf;
+	@PersistenceContext
+	private static EntityManager em;
 		
 		static{
-			emf = Persistence.createEntityManagerFactory("Mysql_UP");
-			em = emf.createEntityManager();
+			//emf = Persistence.createEntityManagerFactory("Mysql_UP");
+			//em = emf.createEntityManager();
 		}
 		
 		public static EntityManager getEntityManager() {
@@ -21,8 +24,8 @@ public class DAOUtil {
 		public static void close() {
 			if(em != null)
 			em.close();
-			if(emf != null)
-			emf.close();
+			//if(emf != null)
+			//emf.close();
 		}
 }
 

@@ -1,22 +1,16 @@
-package fr.eni.jpa.jpa13criteriaspring.dao;
+package fr.eni.jpa.jpa13criteriaspringgradle.dao;
 
+import fr.eni.jpa.jpa13criteriaspringgradle.entity.Civilite;
+import fr.eni.jpa.jpa13criteriaspringgradle.entity.Personne;
+import fr.eni.jpa.jpa13criteriaspringgradle.exception.DAOException;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.List;
-
-import JPA.Criteria.entity.Civilite;
-import JPA.Criteria.entity.Personne;
-import JPA.Criteria.exception.DAOException;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.Order;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-
 public class PersonneDAOCriteria {
 
-	public static void add(Personne personne) throws DAOException{
+	public static void add(Personne personne) throws DAOException {
 		EntityManager em = DAOUtil.getEntityManager();
 			em.getTransaction().begin();
 		try { 

@@ -1,4 +1,4 @@
-package fr.eni.jpa.jpa13criteriaspring.exception;
+package fr.eni.jpa.jpa13criteriaspringgradle.exception;
 
 import java.util.ArrayList;
 

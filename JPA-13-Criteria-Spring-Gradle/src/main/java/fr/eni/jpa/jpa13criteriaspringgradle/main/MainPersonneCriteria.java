@@ -1,6 +1,12 @@
-package fr.eni.jpa.jpa13criteriaspring.main;
+package fr.eni.jpa.jpa13criteriaspringgradle.main;
 
 import java.util.List;
+
+import fr.eni.jpa.jpa13criteriaspringgradle.dao.DAOUtil;
+import fr.eni.jpa.jpa13criteriaspringgradle.dao.PersonneDAOCriteria;
+import fr.eni.jpa.jpa13criteriaspringgradle.entity.Civilite;
+import fr.eni.jpa.jpa13criteriaspringgradle.dao.CiviliteDAO;
+import fr.eni.jpa.jpa13criteriaspringgradle.entity.Personne;
 
 public class MainPersonneCriteria {
 

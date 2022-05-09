@@ -1,16 +1,15 @@
-package fr.eni.jpa.jpa13criteriaspring.dao;
+package fr.eni.jpa.jpa13criteriaspringgradle.dao;
 
+import fr.eni.jpa.jpa13criteriaspringgradle.entity.Civilite;
+import fr.eni.jpa.jpa13criteriaspringgradle.exception.DAOException;
+
+import javax.persistence.EntityManager;
 import java.util.List;
-
-import JPA.Criteria.entity.Civilite;
-import JPA.Criteria.exception.DAOException;
-import jakarta.persistence.EntityManager;
-
 public class CiviliteDAO{
 	
-	public static void add(Civilite civilite)throws DAOException{
+	public static void add(Civilite civilite)throws DAOException {
 		EntityManager em = DAOUtil.getEntityManager();
-			em.getTransaction().begin();
+		em.getTransaction().begin();
 		try {
 			em.persist(civilite);
 			em.getTransaction().commit();		

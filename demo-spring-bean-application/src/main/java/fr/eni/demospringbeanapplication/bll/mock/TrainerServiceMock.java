@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-@Service
-@Profile("dev")
+//@Service
+//@Profile("dev")
 public class TrainerServiceMock implements TrainerService {
 
     // Solution temporaire - gestion d'une liste de formateur locale

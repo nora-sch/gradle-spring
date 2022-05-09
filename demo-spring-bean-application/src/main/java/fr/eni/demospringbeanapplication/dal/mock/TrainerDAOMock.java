@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@Repository
+//@Repository
 public class TrainerDAOMock implements TrainerDAO {
     // Solution temporaire - gestion d'une liste de formateur locale
     private static List<Trainer> lstTrainers;

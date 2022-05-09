@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-@Profile("default")
+//@Service
+//@Profile("default")
 public class TrainerServiceImpl implements TrainerService{
     private TrainerDAO trainerDAO;
 
-    @Autowired
+    //@Autowired
     public TrainerServiceImpl(TrainerDAO trainerDAO){
         this.trainerDAO = trainerDAO;
     }

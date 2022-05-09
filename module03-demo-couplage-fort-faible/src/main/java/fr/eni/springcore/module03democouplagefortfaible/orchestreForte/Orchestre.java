@@ -1,4 +1,4 @@
-package fr.eni.springcore.module03democouplagefortfaible.orchestre;
+package fr.eni.springcore.module03democouplagefortfaible.orchestreForte;
 
 import java.util.ArrayList;
 import java.util.List;

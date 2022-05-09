@@ -1,8 +1,8 @@
 package fr.eni.springcore.module03democouplagefortfaible.main;
 
-import fr.eni.springcore.module03democouplagefortfaible.orchestre.Orchestre;
-import fr.eni.springcore.module03democouplagefortfaible.orchestre.Pianiste;
-import fr.eni.springcore.module03democouplagefortfaible.orchestre.Violoniste;
+import fr.eni.springcore.module03democouplagefortfaible.orchestreForte.Orchestre;
+import fr.eni.springcore.module03democouplagefortfaible.orchestreForte.Pianiste;
+import fr.eni.springcore.module03democouplagefortfaible.orchestreForte.Violoniste;
 
 public class MainOrchestreForte {
     public static void main(String[] args){

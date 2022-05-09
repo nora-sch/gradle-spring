@@ -1,4 +1,4 @@
-package fr.eni.springcore.module03democouplagefortfaible.orchestre;
+package fr.eni.springcore.module03democouplagefortfaible.orchestreForte;
 
 public class Violoniste {
     private Violon violon;

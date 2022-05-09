@@ -15,7 +15,7 @@ public class TrainerController {
 
     // injection dependance par constructeur
     @Autowired
-    public TrainerController(@Qualifier("trainerServiceImpl")TrainerService trainerService){
+    public TrainerController(TrainerService trainerService){
         System.out.println("Appel du construteur TrainerController");
         this.trainerService = trainerService;
     }

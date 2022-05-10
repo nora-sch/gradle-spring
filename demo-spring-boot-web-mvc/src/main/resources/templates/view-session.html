@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Spring Web</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/demo-table.css">
+    <link rel="icon" href="/img/logoENI.png">
+</head>
+<body>
+<header>
+    <h1 id="nav-title">
+        <a href="/">Démonstrations Spring Web</a>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="/session">Test Session</a></li>
+            <li><a href="/session/invalidate">Invalidation de la Session</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Attribut en Session</h1>
+    <h2>@SessionAttributes : attribut SpringSession</h2>
+    <p data-th-text="${SpringSession}"></p><br>
+    <h2>HttpSession : attribut HttpSession</h2>
+    <!-- Pour accéder aux attributs dans HttpSession, il faut utiliser le mot clef session -->
+    <p data-th-text="${session.HttpSession}"></p><br>
+    <h2>Même attribut [SpringSession] par les 2 contextes</h2>
+    <p data-th-text="${SpringSession}"></p>
+    <p data-th-text="${session.SpringSession}"></p>
+</main>
+</body>
+</html>

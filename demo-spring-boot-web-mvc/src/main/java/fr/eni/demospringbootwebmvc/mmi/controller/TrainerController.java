@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/trainers")
-@SessionAttributes({"allCourses"})
+@SessionAttributes({"allCourses", "SpringSession"})
 public class TrainerController {
 
     //Injection du TrainerService

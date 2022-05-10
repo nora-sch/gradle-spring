@@ -9,11 +9,18 @@
 </head>
 <body>
 <header>
-  <h1 id="nav-title"><a href="/">Démonstrations Spring Web</a></h1>
+  <h1 id="nav-title">
+    <a href="/">Démonstrations Spring Web</a>
+    <th:block data-th-if="${SpringSession != null}">
+      <span data-th-text="${'[' + SpringSession + ']'}"></span>
+    </th:block>
+  </h1>
   <nav>
     <ul>
       <li><a href="/trainers">Formateurs</a></li>
       <li><a href="/trainers/create">Création</a></li>
+      <li><a href="/session">Connexion</a></li>
+      <li><a href="/session/invalidate">Déconnexion</a></li>
     </ul>
   </nav>
 </header>

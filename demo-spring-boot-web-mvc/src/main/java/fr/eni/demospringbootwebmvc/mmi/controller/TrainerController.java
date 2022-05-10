@@ -47,9 +47,10 @@ public class TrainerController {
             emailTrainer = "coach@campus-eni.fr";
         }
         System.out.println("La variable - " + emailTrainer);
-        return "view-trainer-form";
+        //Redirection vers la page d'accueil
+        return "redirect:/";
+       // return "view-trainer-form";
     }
-
         @PostMapping
     public String createOrUpdateTrainer(
             @RequestParam(required = true) String email,

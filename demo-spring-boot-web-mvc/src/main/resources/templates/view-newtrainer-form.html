@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo Spring Web</title>
+        <link rel="stylesheet" href="/css/general.css">
+        <link rel="stylesheet" href="/css/demo-form.css">
+        <link rel="icon" href="/img/logoENI.png">
+    </head>
+<body>
+<header>
+    <h1 id="nav-title">
+        <a href="/">Démonstrations Spring Web</a>
+        <th:block data-th-if="${SpringSession != null}">
+            <span data-th-text="${'[' + SpringSession + ']'}"></span>
+        </th:block>
+    </h1>
+    <nav>
+        <ul>
+            <li><a href="/trainers">Formateurs</a></li>
+            <li><a href="/trainers/create">Création</a></li>
+            <li><a href="/session">Connexion</a></li>
+            <li><a href="/session/invalidate">Déconnexion</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <form data-th-action="@{/trainers/create}" data-th-object="${trainer}" method="post">
+        <h1>Détail du formateur</h1>
+        <ul class="flex-outer">
+            <li><label for="inputFirstN">Prénom : </label>
+                <input type="text" data-th-field="*{firstName}" id="inputFirstN" required/>
+            </li>
+            <li><label for="inputLastN">Nom : </label>
+                <input type="text" data-th-field="*{lastName}" id="inputLastN" required/>
+            </li>
+            <li><label for="inputEmail">Email : </label>
+                <input type="text" data-th-field="*{email}" id="inputEmail" required/>
+            </li>
+            <li><label for="lstCourses">Cours : </label>
+                <select id="lstCourses" data-th-field="*{lstCourses}" required
+                        multiple="multiple">
+                    <option data-th-each="course : ${allCourses}"
+                            data-th-text="${course.id} + ' ' + ${course.title}"
+                            data-th-value="${course.id}"></option>
+                </select>
+            </li>
+            <li>
+                <button type="submit">Enregistrer</button>
+            </li>
+        </ul>
+    </form>
+</main>
+</body>
+</html>

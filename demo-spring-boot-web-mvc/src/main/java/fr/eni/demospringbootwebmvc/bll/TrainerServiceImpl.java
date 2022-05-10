@@ -24,6 +24,13 @@ public class TrainerServiceImpl implements TrainerService{
         trainerDAO.create(trainer);
     }
     @Override
+    public void create(Trainer trainer) {
+        Trainer t = findByEmail(trainer.getEmail());
+        if (t == null) {
+            trainerDAO.create(trainer);
+        }
+    }
+    @Override
     public List<Trainer> findAll() {
         return trainerDAO.findAll();
     }

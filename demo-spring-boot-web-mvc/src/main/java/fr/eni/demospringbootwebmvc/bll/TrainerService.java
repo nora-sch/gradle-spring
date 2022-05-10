@@ -9,4 +9,5 @@ public interface TrainerService {
     List<Trainer> findAll();
     Trainer findByEmail(String email);
     void update(Trainer trainer);
+    void create(Trainer trainer);
 }

@@ -115,4 +115,21 @@ public class TrainerController {
     }
     */
 
+    // Création d'un nouveau formateur
+    @GetMapping("/create")
+    public String createTrainer(Model model) {
+        Trainer trainer = new Trainer();
+    // Ajout de l'instance dans le modèle
+        model.addAttribute("trainer", trainer);
+        return "view-newtrainer-form";
+    }
+    // Récupération de l'objet trainer du formulaire
+    //Traçage de la liste des cours associés via Converter
+    //sauvegarde
+    @PostMapping("/create")
+    public String createTrainer(@ModelAttribute("trainer") Trainer trainer) {
+        System.out.println(trainer.getLstCourses());
+        trainerService.create(trainer);
+        return "redirect:/trainers";
+    }
 }

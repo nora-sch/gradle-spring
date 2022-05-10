@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Demo Spring Web</title>
+    <link rel="stylesheet" href="/css/general.css">
+    <link rel="stylesheet" href="/css/demo-table.css">
+    <link rel="icon" href="/img/logoENI.png">
 </head>
 <body>
-<h1>Les formateurs de l'ENI</h1>
-<a href="trainers/detail?email=abaille@campus-eni.fr">Accéder au détail du formateur</a><br>
-<a href="trainers/detail?email">Paramètre n’a pas de valeur associée</a><br>
-<a href="trainers/detail">Accéder à la vue sans le paramètre</a><br>
-<h2>Variable de la requête : </h2>
-<a href="trainers/detail/variable/sgobin@campus-eni.fr">Accéder au détail du formateur</a><br>
-<a href="trainers/detail/variable/">Accéder à la vue sans la variable</a>
+<header>
+    <h1 id="nav-title"><a href="/">Démonstrations Spring Web</a></h1>
+    <nav>
+        <ul>
+            <li><a href="/trainers">Formateurs</a></li>
+            <li><a href="/trainers/create">Création</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Les formateurs de l'ENI</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Index</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!—build html table based on trainers →
+        <tr data-th-each="current, iter : ${trainers}">
+            <td data-th-text="${iter.index}"></td>
+            <td data-th-text="${current.firstName}"></td>
+            <td data-th-text="${current.lastName}"></td>
+            <td><a data-th-href="@{/trainers/detail(email=${current.email})}">Détail</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
 </body>
+
 </html>

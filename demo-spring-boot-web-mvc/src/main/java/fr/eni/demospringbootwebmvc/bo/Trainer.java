@@ -1,15 +1,32 @@
 package fr.eni.demospringbootwebmvc.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Trainer {
     private String firstName;
     private String lastName;
     private String email;
+
+    //1 formateur peut dispenser plusieurs cours
+    private List<Course> lstCourses;
     public Trainer() {
+    //initialisation de la liste des cours.
+        lstCourses = new ArrayList<Course>();
     }
     public Trainer(String firstName, String lastName, String email) {
+        this();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public List<Course> getLstCourses() {
+        return lstCourses;
+    }
+
+    public void setLstCourses(List<Course> lstCourses) {
+        this.lstCourses = lstCourses;
     }
 
     public String getFirstName() {

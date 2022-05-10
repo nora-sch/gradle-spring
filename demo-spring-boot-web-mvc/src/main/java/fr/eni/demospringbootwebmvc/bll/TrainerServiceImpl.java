@@ -33,4 +33,9 @@ public class TrainerServiceImpl implements TrainerService{
         return trainerDAO.read(emailTrainer);
 
     }
+    @Override
+    public void update(Trainer trainer) {
+        trainerDAO.update(trainer);
+
+    }
 }

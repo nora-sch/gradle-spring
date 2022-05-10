@@ -7,4 +7,5 @@ import java.util.List;
 public interface TrainerService {
     void add(String firstName, String lastName, String email);
     List<Trainer> findAll();
+    Trainer findByEmail(String email);
 }

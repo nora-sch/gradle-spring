@@ -1,11 +1,23 @@
 package fr.eni.demospringbootwebmvc.mmi.controller;
 
+import fr.eni.demospringbootwebmvc.bll.TrainerService;
+import fr.eni.demospringbootwebmvc.bo.Trainer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/trainers")
 public class TrainerController {
+
+    //Injection du TrainerService
+    private TrainerService trainerService;
+    @Autowired
+    public TrainerController(TrainerService trainerService) {
+        this.trainerService = trainerService;
+    }
+
     @GetMapping
     public String allTrainers() {
         System.out.println("Nous chargerons la liste des formateurs dans une autre démonstration");
@@ -16,8 +28,11 @@ public class TrainerController {
     public String detailTrainer(
             @RequestParam(name = "email",
                     required = false,
-                    defaultValue = "coach@campus-eni.fr") String emailTrainer) {
+                    defaultValue = "coach@campus-eni.fr") String emailTrainer, Model model) {
         System.out.println("Le paramètre - " + emailTrainer);
+        Trainer trainer = trainerService.findByEmail(emailTrainer);
+        // Ajout de l'instance dans le modèle
+        model.addAttribute("trainer", trainer);
         return "view-trainer-form";
     }
 

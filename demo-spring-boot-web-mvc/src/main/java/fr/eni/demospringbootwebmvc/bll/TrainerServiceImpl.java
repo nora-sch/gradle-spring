@@ -27,4 +27,10 @@ public class TrainerServiceImpl implements TrainerService{
     public List<Trainer> findAll() {
         return trainerDAO.findAll();
     }
+
+    @Override
+    public Trainer findByEmail(String emailTrainer) {
+        return trainerDAO.read(emailTrainer);
+
+    }
 }

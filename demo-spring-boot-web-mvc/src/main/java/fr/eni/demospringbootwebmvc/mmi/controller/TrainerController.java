@@ -42,7 +42,7 @@ public class TrainerController {
         // Ajout de l'instance dans le modèle
         model.addAttribute("trainer", trainer);
         //Appel de la méthode de chargement des cours en session
-        loadCourses(model);
+        //loadCourses(model);
         return "view-trainer-form";
     }
 
@@ -62,8 +62,9 @@ public class TrainerController {
        // return "view-trainer-form";
     }
 
+      /*
         @PostMapping
-    public String createOrUpdateTrainer(
+         public String createOrUpdateTrainer(
             @RequestParam(required = true) String email,
             @RequestParam(required = true) String firstName,
             @RequestParam(required = true) String lastName, Model model) {
@@ -75,6 +76,15 @@ public class TrainerController {
             model.addAttribute("trainers", lstTrainers);
         return "view-trainers";
     }
+      */
+      @PostMapping
+      public String updateTrainer(@ModelAttribute("trainer")Trainer trainer) {
+          System.out.println(trainer) ;
+          trainerService.update(trainer) ;
+          return "redirect:/trainers";
+      }
+
+
 
     //Ajout d'un cours au formateur courant
     @PostMapping("/courses")
@@ -88,14 +98,21 @@ public class TrainerController {
         return "redirect:/trainers/detail?email="+email;
     }
 
+    @ModelAttribute("allCourses")
+    public List<Course> getCourses(){
+        System.out.println("getCourses");
+        return courseService.findAll();
+    }
+
     // Méthode pour charger la liste des cours en session
+    /*
     private void loadCourses(Model model) {
-    // Vérification que l'attribut n'est pas déjà en session
         Object sessionAttribute = model.getAttribute("allCourses");
         if (sessionAttribute == null) {
             System.out.println("Chargement en session de tous les cours");
             model.addAttribute("allCourses", courseService.findAll());
         }
     }
+    */
 
 }

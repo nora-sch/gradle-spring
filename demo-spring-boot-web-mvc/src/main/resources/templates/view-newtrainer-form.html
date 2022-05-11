@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -8,6 +8,7 @@
         <title>Demo Spring Web</title>
         <link rel="stylesheet" href="/css/general.css">
         <link rel="stylesheet" href="/css/demo-form.css">
+        <link rel="stylesheet" href="/css/demo-error.css">
         <link rel="icon" href="/img/logoENI.png">
     </head>
 <body>
@@ -30,15 +31,32 @@
 <main>
     <form data-th-action="@{/trainers/create}" data-th-object="${trainer}" method="post">
         <h1>Détail du formateur</h1>
+        <!-- Affichage d'un message global s'il y a des erreurs -->
+        <div class="cards" th:if="${#fields.hasErrors('*')}" >
+            <h2>Veuillez vérifier vos champs</h2>
+        </div>
         <ul class="flex-outer">
             <li><label for="inputFirstN">Prénom : </label>
                 <input type="text" data-th-field="*{firstName}" id="inputFirstN" required/>
+                <!-- Affichage de la liste des messages d'erreur liée au champ courant -->
+                <ul class="cards" data-th-if="${#fields.hasErrors('firstName')}">
+                    <li data-th-each="err: ${#fields.errors('firstName')}" data-th-text="${err}"></li>
+                </ul>
+
             </li>
             <li><label for="inputLastN">Nom : </label>
                 <input type="text" data-th-field="*{lastName}" id="inputLastN" required/>
+                <!-- Affichage de la liste des messages d'erreur liée au champ courant -->
+                <ul class="cards" data-th-if="${#fields.hasErrors('lastName')}">
+                    <li data-th-each="err: ${#fields.errors('lastName')}" data-th-text="${err}"></li>
+                </ul>
             </li>
             <li><label for="inputEmail">Email : </label>
                 <input type="text" data-th-field="*{email}" id="inputEmail" required/>
+                <!-- Affichage de la liste des messages d'erreur liée au champ courant -->
+                <ul class="cards" data-th-if="${#fields.hasErrors('email')}">
+                    <li data-th-each="err: ${#fields.errors('email')}" data-th-text="${err}"></li>
+                </ul>
             </li>
             <li><label for="lstCourses">Cours : </label>
                 <select id="lstCourses" data-th-field="*{lstCourses}" required
@@ -47,6 +65,10 @@
                             data-th-text="${course.id} + ' ' + ${course.title}"
                             data-th-value="${course.id}"></option>
                 </select>
+                <!-- Affichage de la liste des messages d'erreur, Spring la parcoure lui-même -->
+                <div class="cards" data-th-if="${#fields.hasErrors('lstCourses')}">
+                    <span data-th-errors="*{lstCourses}"></span>
+                </div>
             </li>
             <li>
                 <button type="submit">Enregistrer</button>

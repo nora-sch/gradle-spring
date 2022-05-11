@@ -7,6 +7,8 @@ import fr.eni.demospringbootwebmvc.bo.Trainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import javax.validation.Valid;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -127,9 +129,14 @@ public class TrainerController {
     //Traçage de la liste des cours associés via Converter
     //sauvegarde
     @PostMapping("/create")
-    public String createTrainer(@ModelAttribute("trainer") Trainer trainer) {
-        System.out.println(trainer.getLstCourses());
-        trainerService.create(trainer);
-        return "redirect:/trainers";
-    }
+    public String createTrainer(@Valid @ModelAttribute("trainer") Trainer trainer, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            System.out.println("erreur validation");
+            return "view-newtrainer-form";
+        }else{
+            System.out.println(trainer.getLstCourses());
+            trainerService.create(trainer);
+            return "redirect:/trainers";
+        }
+     }
 }

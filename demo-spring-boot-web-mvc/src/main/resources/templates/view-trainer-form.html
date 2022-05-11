@@ -9,18 +9,23 @@
 </head>
 <body>
 <header>
-  <h1 id="nav-title">
-    <a href="/">Démonstrations Spring Web</a>
-    <th:block data-th-if="${SpringSession != null}">
-      <span data-th-text="${'[' + SpringSession + ']'}"></span>
-    </th:block>
-  </h1>
+  <section id="nav-title">
+    <h1 ><a href="/" data-th-text="#{nav.h1}"></a>
+      <th:block data-th-if="${SpringSession != null}">
+        <span data-th-text="${'[' + SpringSession + ']'}"></span>
+      </th:block>
+    </h1>
+    <div>
+      <a href="/?language=fr"><img alt="Français" src="/img/French.webp"></a>
+      <a href="/?language=en"><img alt="English" src="/img/English.webp"></a>
+    </div>
+  </section>
   <nav>
     <ul>
-      <li><a href="/trainers">Formateurs</a></li>
-      <li><a href="/trainers/create">Création</a></li>
-      <li><a href="/session">Connexion</a></li>
-      <li><a href="/session/invalidate">Déconnexion</a></li>
+      <li><a href="/trainers" data-th-text="#{nav.trainers}"></a></li>
+      <li><a href="/trainers/create" data-th-text="#{nav.trainers.create}"></a></li>
+      <li><a href="/session" data-th-text="#{nav.session}"></a></li>
+      <li><a href="/session/invalidate" data-th-text="#{nav.session.invalidate}"></a></li>
     </ul>
   </nav>
 </header>

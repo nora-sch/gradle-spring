@@ -25,6 +25,7 @@ header {
 	padding: 20px 50px;
 	box-shadow: 0 1px 8px #ddd;
 }
+#nav-title a>img {width: 25px;}
 
 #nav-title {
 	margin-right: auto;

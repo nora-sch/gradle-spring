@@ -2,10 +2,12 @@ package fr.eni.demojpa;
 
 import fr.eni.demojpa.key1.PersonnePK1Repository;
 import fr.eni.demojpa.key2.PersonnePK2Repository;
+import fr.eni.demojpa.oneone.uni.PersonneOTOURepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 
@@ -17,6 +19,7 @@ public class DemoJpaApplication {
        }
 
     @Bean
+    @Profile("demo")
     public CommandLineRunner demoKey1(PersonnePK1Repository repository) {
         return (args) -> {
             // save a few customers
@@ -34,6 +37,7 @@ public class DemoJpaApplication {
 
 
     @Bean
+    @Profile("demo")
     public CommandLineRunner demoKey2(PersonnePK2Repository repository) {
         return (args) -> {
             // save a few customers
@@ -44,6 +48,26 @@ public class DemoJpaApplication {
             System.out.println("Liste des personnes : ");
             System.out.println("-------------------------------");
             for (fr.eni.demojpa.key2.Personne p : repository.findAll()) {
+                System.out.println(p.toString());
+            }
+        };
+    }
+
+    @Bean
+    public CommandLineRunner demoOneToOneUni(PersonneOTOURepository repository) {
+        return (args) -> {
+            fr.eni.demojpa.oneone.uni.Adresse a1 = new fr.eni.demojpa.oneone.uni.Adresse("75000", "Paris");
+            fr.eni.demojpa.oneone.uni.Adresse a2 = new fr.eni.demojpa.oneone.uni.Adresse("35000", "Rennes");
+            fr.eni.demojpa.oneone.uni.Personne p1 = new fr.eni.demojpa.oneone.uni.Personne ("Legrand", "Lucie",
+                    LocalDate.parse("2008-06-18"), a1);
+            fr.eni.demojpa.oneone.uni.Personne p2 = new fr.eni.demojpa.oneone.uni.Personne ("Legrand", "Lucie2",
+                    LocalDate.parse("2006-04-03"), a2);
+            repository.save(p1);
+            repository.save(p2);
+            // fetch all
+            System.out.println("Liste des personnes : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.oneone.uni.Personne p : repository.findAll()) {
                 System.out.println(p.toString());
             }
         };

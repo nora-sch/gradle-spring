@@ -1,6 +1,6 @@
 package fr.eni.demojpa.key2;
 
-import fr.eni.demojpa.key1.PersonnePK;
+import fr.eni.demojpa.key2.PersonnePK;
 
 import javax.persistence.*;
 import java.time.LocalDate;

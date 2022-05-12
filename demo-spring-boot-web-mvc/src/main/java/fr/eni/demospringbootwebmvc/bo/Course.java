@@ -1,7 +1,14 @@
 package fr.eni.demospringbootwebmvc.bo;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="COURSES")
 public class Course {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(length = 250, nullable = false)
     private String title;
     private int duration;
     public Course() {

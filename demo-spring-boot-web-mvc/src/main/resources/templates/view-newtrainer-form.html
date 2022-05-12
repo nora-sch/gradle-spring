@@ -43,7 +43,7 @@
         <ul class="flex-outer">
             <li><label for="inputFirstN">Prénom : </label>
                 <input type="text" data-th-field="*{firstName}" id="inputFirstN" required/>
-                <!-- Affichage de la liste des messages d'erreur liée au champ courant -->
+                <!-- Affichage de la liste des messages.properties d'erreur liée au champ courant -->
                 <ul class="cards" data-th-if="${#fields.hasErrors('firstName')}">
                     <li data-th-each="err: ${#fields.errors('firstName')}" data-th-text="${err}"></li>
                 </ul>
@@ -51,14 +51,14 @@
             </li>
             <li><label for="inputLastN">Nom : </label>
                 <input type="text" data-th-field="*{lastName}" id="inputLastN" required/>
-                <!-- Affichage de la liste des messages d'erreur liée au champ courant -->
+                <!-- Affichage de la liste des messages.properties d'erreur liée au champ courant -->
                 <ul class="cards" data-th-if="${#fields.hasErrors('lastName')}">
                     <li data-th-each="err: ${#fields.errors('lastName')}" data-th-text="${err}"></li>
                 </ul>
             </li>
             <li><label for="inputEmail">Email : </label>
                 <input type="text" data-th-field="*{email}" id="inputEmail" required/>
-                <!-- Affichage de la liste des messages d'erreur liée au champ courant -->
+                <!-- Affichage de la liste des messages.properties d'erreur liée au champ courant -->
                 <ul class="cards" data-th-if="${#fields.hasErrors('email')}">
                     <li data-th-each="err: ${#fields.errors('email')}" data-th-text="${err}"></li>
                 </ul>
@@ -70,7 +70,7 @@
                             data-th-text="${course.id} + ' ' + ${course.title}"
                             data-th-value="${course.id}"></option>
                 </select>
-                <!-- Affichage de la liste des messages d'erreur, Spring la parcoure lui-même -->
+                <!-- Affichage de la liste des messages.properties d'erreur, Spring la parcoure lui-même -->
                 <div class="cards" data-th-if="${#fields.hasErrors('lstCourses')}">
                     <span data-th-errors="*{lstCourses}"></span>
                 </div>

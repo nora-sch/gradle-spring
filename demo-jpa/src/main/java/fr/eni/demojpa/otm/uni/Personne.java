@@ -13,7 +13,7 @@ public class Personne {
     private String nom;
     private String prenom;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "personne_id")
     private List<Adresse> adresses;
 

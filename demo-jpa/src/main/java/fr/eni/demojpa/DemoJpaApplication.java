@@ -4,6 +4,8 @@ import fr.eni.demojpa.key1.PersonnePK1Repository;
 import fr.eni.demojpa.key2.PersonnePK2Repository;
 import fr.eni.demojpa.oneone.bi.PersonneOTOBiRepository;
 import fr.eni.demojpa.oneone.uni.PersonneOTOURepository;
+import fr.eni.demojpa.otm.uni.AdresseOTMURepository;
+import fr.eni.demojpa.otm.uni.PersonneOTMURepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -75,6 +77,7 @@ public class DemoJpaApplication {
         };
     }
     @Bean
+    @Profile("demo")
     public CommandLineRunner demoOneToOneBi(PersonneOTOBiRepository repository) {
         return (args) -> {
             fr.eni.demojpa.oneone.bi.Adresse a1 = new fr.eni.demojpa.oneone.bi.Adresse("75000", "Paris");
@@ -97,6 +100,29 @@ public class DemoJpaApplication {
             System.out.println(a2.getPersonne());
         };
     }
-
+    @Bean
+    public CommandLineRunner demoOneToManyUni(PersonneOTMURepository persDAO,
+                                              AdresseOTMURepository adresseDAO) {
+        return (args) -> {
+// save a few customers
+            fr.eni.demojpa.otm.uni.Adresse a1 = new fr.eni.demojpa.otm.uni.Adresse("44000", "Nantes");
+            fr.eni.demojpa.otm.uni.Adresse a2 = new fr.eni.demojpa.otm.uni.Adresse("33000", "Bordeaux");
+            fr.eni.demojpa.otm.uni.Adresse a3 = new fr.eni.demojpa.otm.uni.Adresse("29000", "Brest");
+            fr.eni.demojpa.otm.uni.Adresse a4 = new fr.eni.demojpa.otm.uni.Adresse("74000", "Chamonix");
+            fr.eni.demojpa.otm.uni.Personne albert = new fr.eni.demojpa.otm.uni.Personne("Dupontel","Albert");
+            fr.eni.demojpa.otm.uni.Personne sophie = new fr.eni.demojpa.otm.uni.Personne("Marceau","Sophie");
+            albert.addAdresse(a1);
+            albert.addAdresse(a2);
+            sophie.addAdresse(a3);
+            sophie.addAdresse(a4);
+            persDAO.save(albert);
+            persDAO.save(sophie);
+            System.out.println("Liste des personnes : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.otm.uni.Personne personne : persDAO.findAll()) {
+                System.out.println(personne.toString());
+            }
+        };
+    }
 
     }

@@ -2,12 +2,14 @@ package fr.eni.demospringbootwebmvc.dal.mock;
 
 import fr.eni.demospringbootwebmvc.bo.Course;
 import fr.eni.demospringbootwebmvc.dal.CourseDAO;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
+@Profile("dev")
 public class CourseDAOMock implements CourseDAO {
 
     private static List<Course> lstCourses;

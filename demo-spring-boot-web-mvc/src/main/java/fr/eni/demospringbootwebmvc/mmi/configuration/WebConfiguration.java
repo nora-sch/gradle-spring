@@ -1,5 +1,8 @@
 package fr.eni.demospringbootwebmvc.mmi.configuration;
 
+import fr.eni.demospringbootwebmvc.bo.Course;
+import fr.eni.demospringbootwebmvc.dal.CourseRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -30,4 +33,23 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry.addInterceptor(localeChangeInterceptor());
     }
 
-}
+    //Pour injecter par défaut des cours en base.
+    @Bean
+    public CommandLineRunner demo(CourseRepository repository) {
+        return (args) -> {
+    // ajouter des cours
+            repository.save(new Course(10, "Algorithmique", 5));
+            repository.save(new Course(20, "Initiation à la programmation", 5));
+            repository.save(new Course(30, "POO", 10));
+            repository.save(new Course(50, "SQL", 5));
+            repository.save(new Course(60, "PL-SQL", 5));
+            repository.save(new Course(130, "Web Client", 5));
+            repository.save(new Course(140, "Symfony", 10));
+            repository.save(new Course(220, "frameworks Java EE", 10));
+            // Tracer la liste créée
+            System.out.println("Liste des cours : ");
+            repository.findAll().forEach(course -> System.out.println(course));
+        };
+    }
+
+    }

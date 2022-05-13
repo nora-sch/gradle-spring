@@ -1,4 +1,4 @@
-package fr.eni.demojpa.heritage.joined;
+package com.eni.demojpa.heritage.joined;
 
 import javax.persistence.*;
 

@@ -23,7 +23,8 @@ import com.eni.demojpa.mtm.uni.PaysMTMURepository;
 import com.eni.demojpa.mtm.uni.PersonneMTMURepository;
 import com.eni.demojpa.heritage.singletable.VoitureHSTRepository;
 import com.eni.demojpa.heritage.tableperclass.VoitureHTPCRepository;
-import fr.eni.demojpa.heritage.joined.VoitureHJRepository;
+import com.eni.demojpa.heritage.joined.VoitureHJRepository;
+import fr.eni.demojpa.collections.PersonneCBRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -350,20 +351,43 @@ public class DemoJpaApplication {
         };
     }
     @Bean
+    @Profile("demo")
     public CommandLineRunner demoHeritageJoined(VoitureHJRepository voitureRepo) {
         return (args) -> {
-            fr.eni.demojpa.heritage.joined.Voiture clio = new fr.eni.demojpa.heritage.joined.Voiture("RenaultClio");
-            fr.eni.demojpa.heritage.joined.Berline bmw = new fr.eni.demojpa.heritage.joined.Berline("BMW", "Rouge");
-            fr.eni.demojpa.heritage.joined.VoitureDeCourse ferrari = new fr.eni.demojpa.heritage.joined.VoitureDeCourse(
+            com.eni.demojpa.heritage.joined.Voiture clio = new com.eni.demojpa.heritage.joined.Voiture("RenaultClio");
+            com.eni.demojpa.heritage.joined.Berline bmw = new com.eni.demojpa.heritage.joined.Berline("BMW", "Rouge");
+            com.eni.demojpa.heritage.joined.VoitureDeCourse ferrari = new com.eni.demojpa.heritage.joined.VoitureDeCourse(
                     "Ferrari", "Scuderia Ferrari");
             voitureRepo.save(clio);
             voitureRepo.save(bmw);
             voitureRepo.save(ferrari);
             System.out.println("Liste des voitures : ");
             System.out.println("-------------------------------");
-            for (fr.eni.demojpa.heritage.joined.Voiture v : voitureRepo.findAll()) {
+            for (com.eni.demojpa.heritage.joined.Voiture v : voitureRepo.findAll()) {
                 System.out.println(v.toString());
             }
         };
     }
+    @Bean
+    public CommandLineRunner demoCollectionsBases(PersonneCBRepository persDAO) {
+        return (args) -> {
+            fr.eni.demojpa.collections.Personne albert = new fr.eni.demojpa.collections.Personne("Dupontel", "Albert");
+            fr.eni.demojpa.collections.Personne sophie = new fr.eni.demojpa.collections.Personne("Marceau", "Sophie");
+            albert.addSport("Athletisme");
+            albert.addSport("Judo");
+            sophie.addSport("Football");
+            sophie.addSport("Judo");
+            sophie.addSport("Karaté");
+            persDAO.save(albert);
+            persDAO.save(sophie);
+            System.out.println("Liste des personnes : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.collections.Personne personne : persDAO.findAll()) {
+                System.out.println(personne.toString());
+            }
+        };
+    }
+
+
+
 }

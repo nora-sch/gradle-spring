@@ -1,5 +1,8 @@
 package fr.eni.demojpa;
 
+import com.eni.demojpa.heritage.singletable.Berline;
+import com.eni.demojpa.heritage.singletable.Voiture;
+import com.eni.demojpa.heritage.singletable.VoitureDeCourse;
 import com.eni.demojpa.mto.Civilite;
 import com.eni.demojpa.otm.uni.Personne;
 import com.eni.demojpa.key1.PersonnePK1Repository;
@@ -13,11 +16,14 @@ import com.eni.demojpa.otm.uni.AdresseOTMURepository;
 import com.eni.demojpa.otm.uni.PersonneOTMURepository;
 import com.eni.demojpa.mto.CiviliteMTORepository;
 import com.eni.demojpa.mto.PersonneMTORepository;
-import fr.eni.demojpa.mtm.bi.PaysMTMBiRepository;
-import fr.eni.demojpa.mtm.bi.PersonneMTMBiRepository;
+import com.eni.demojpa.mtm.bi.PaysMTMBiRepository;
+import com.eni.demojpa.mtm.bi.PersonneMTMBiRepository;
 import com.eni.demojpa.mtm.uni.Pays;
 import com.eni.demojpa.mtm.uni.PaysMTMURepository;
 import com.eni.demojpa.mtm.uni.PersonneMTMURepository;
+import com.eni.demojpa.heritage.singletable.VoitureHSTRepository;
+import com.eni.demojpa.heritage.tableperclass.VoitureHTPCRepository;
+import fr.eni.demojpa.heritage.joined.VoitureHJRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -259,17 +265,18 @@ public class DemoJpaApplication {
         };
     }
     @Bean
+    @Profile("demo")
     public CommandLineRunner demoManyToManyBi(PersonneMTMBiRepository persDAO, PaysMTMBiRepository paysDAO )
     {
         return (args) -> {
-            fr.eni.demojpa.mtm.bi.Pays fr = new fr.eni.demojpa.mtm.bi.Pays("fr", "France");
-            fr.eni.demojpa.mtm.bi.Pays it = new fr.eni.demojpa.mtm.bi.Pays("it", "Italie");
-            fr.eni.demojpa.mtm.bi.Pays gb = new fr.eni.demojpa.mtm.bi.Pays("gb", "Grande Bretagne");
-            fr.eni.demojpa.mtm.bi.Pays gr = new fr.eni.demojpa.mtm.bi.Pays("gr", "Grece");
-            fr.eni.demojpa.mtm.bi.Pays es = new fr.eni.demojpa.mtm.bi.Pays("es", "Espagne");
-            fr.eni.demojpa.mtm.bi.Pays po = new fr.eni.demojpa.mtm.bi.Pays("po", "Portugal");
-            fr.eni.demojpa.mtm.bi.Personne albert = new fr.eni.demojpa.mtm.bi.Personne("Dupontel", "Albert");
-            fr.eni.demojpa.mtm.bi.Personne sophie = new fr.eni.demojpa.mtm.bi.Personne("Marceau", "Sophie");
+            com.eni.demojpa.mtm.bi.Pays fr = new com.eni.demojpa.mtm.bi.Pays("fr", "France");
+            com.eni.demojpa.mtm.bi.Pays it = new com.eni.demojpa.mtm.bi.Pays("it", "Italie");
+            com.eni.demojpa.mtm.bi.Pays gb = new com.eni.demojpa.mtm.bi.Pays("gb", "Grande Bretagne");
+            com.eni.demojpa.mtm.bi.Pays gr = new com.eni.demojpa.mtm.bi.Pays("gr", "Grece");
+            com.eni.demojpa.mtm.bi.Pays es = new com.eni.demojpa.mtm.bi.Pays("es", "Espagne");
+            com.eni.demojpa.mtm.bi.Pays po = new com.eni.demojpa.mtm.bi.Pays("po", "Portugal");
+            com.eni.demojpa.mtm.bi.Personne albert = new com.eni.demojpa.mtm.bi.Personne("Dupontel", "Albert");
+            com.eni.demojpa.mtm.bi.Personne sophie = new com.eni.demojpa.mtm.bi.Personne("Marceau", "Sophie");
             albert.addPaysVisites(fr);
             albert.addPaysVisites(gb);
             albert.addPaysVisites(po);
@@ -280,28 +287,83 @@ public class DemoJpaApplication {
             persDAO.save(sophie);
             System.out.println("Liste des personnes : ");
             System.out.println("-------------------------------");
-            for (fr.eni.demojpa.mtm.bi.Personne personne : persDAO.findAll()) {
+            for (com.eni.demojpa.mtm.bi.Personne personne : persDAO.findAll()) {
                 System.out.println(personne.toString());
             }
             System.out.println("Suppression d'un pays pour albert");
             System.out.println("-------------------------------");
             albert.removePaysVisites(po);
             persDAO.save(albert);
-            Optional<fr.eni.demojpa.mtm.bi.Personne> opt = persDAO.findById(Long.valueOf(albert.getId()));
+            Optional<com.eni.demojpa.mtm.bi.Personne> opt = persDAO.findById(Long.valueOf(albert.getId()));
             if(opt.isPresent()) {
                 System.out.println(opt.get());
             }
         System.out.println("Récupération des personnes se rendant en Grèce");
         System.out.println("-------------------------------");
-       /* Optional<fr.eni.demojpa.mtm.bi.Pays> opt2 = paysDAO.findById("gr");
+        Optional<com.eni.demojpa.mtm.bi.Pays> opt2 = paysDAO.findById("gr");
         if(opt2.isPresent()) {
-            fr.eni.demojpa.mtm.bi.Pays p = opt2.get();
+            com.eni.demojpa.mtm.bi.Pays p = opt2.get();
             System.out.println(p.getPersonnes());
-        }*/
+        }
 
     };
     }
 
+    @Bean
+    @Profile("demo")
+    public CommandLineRunner demoHeritageSingleTable(VoitureHSTRepository voitureRepo) {
+        return (args) -> {
+            Voiture clio = new
+                    Voiture("RenaultClio");
+            Berline bmw = new
+                    Berline("BMW", "Rouge");
+            VoitureDeCourse ferrari = new
+                    VoitureDeCourse(
+                    "Ferrari", "Scuderia Ferrari");
+            voitureRepo.save(clio);
+            voitureRepo.save(bmw);
+            voitureRepo.save(ferrari);
+            System.out.println("Liste des voitures : ");
+            System.out.println("-------------------------------");
+            for (Voiture v : voitureRepo.findAll()) {
+                System.out.println(v.toString());
+            }
+        };
+    }
 
-
+    @Bean
+    @Profile("demo")
+    public CommandLineRunner demoHeritageTablePerClass(VoitureHTPCRepository voitureRepo) {
+        return (args) -> {
+            com.eni.demojpa.heritage.tableperclass.Voiture clio = new com.eni.demojpa.heritage.tableperclass.Voiture("RenaultClio");
+            com.eni.demojpa.heritage.tableperclass.Berline bmw = new com.eni.demojpa.heritage.tableperclass.Berline("BMW", "Rouge");
+            com.eni.demojpa.heritage.tableperclass.VoitureDeCourse ferrari = new com.eni.demojpa.heritage.tableperclass.VoitureDeCourse(
+                    "Ferrari", "Scuderia Ferrari");
+            voitureRepo.save(clio);
+            voitureRepo.save(bmw);
+            voitureRepo.save(ferrari);
+            System.out.println("Liste des voitures : ");
+            System.out.println("-------------------------------");
+            for (com.eni.demojpa.heritage.tableperclass.Voiture v : voitureRepo.findAll()) {
+                System.out.println(v.toString());
+            }
+        };
+    }
+    @Bean
+    public CommandLineRunner demoHeritageJoined(VoitureHJRepository voitureRepo) {
+        return (args) -> {
+            fr.eni.demojpa.heritage.joined.Voiture clio = new fr.eni.demojpa.heritage.joined.Voiture("RenaultClio");
+            fr.eni.demojpa.heritage.joined.Berline bmw = new fr.eni.demojpa.heritage.joined.Berline("BMW", "Rouge");
+            fr.eni.demojpa.heritage.joined.VoitureDeCourse ferrari = new fr.eni.demojpa.heritage.joined.VoitureDeCourse(
+                    "Ferrari", "Scuderia Ferrari");
+            voitureRepo.save(clio);
+            voitureRepo.save(bmw);
+            voitureRepo.save(ferrari);
+            System.out.println("Liste des voitures : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.heritage.joined.Voiture v : voitureRepo.findAll()) {
+                System.out.println(v.toString());
+            }
+        };
+    }
 }

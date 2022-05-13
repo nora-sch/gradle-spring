@@ -1,4 +1,4 @@
-package fr.eni.demojpa.mtm.bi;
+package com.eni.demojpa.mtm.bi;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -4,6 +4,9 @@ import fr.eni.demojpa.key1.PersonnePK1Repository;
 import fr.eni.demojpa.key2.PersonnePK2Repository;
 import fr.eni.demojpa.oneone.bi.PersonneOTOBiRepository;
 import fr.eni.demojpa.oneone.uni.PersonneOTOURepository;
+import fr.eni.demojpa.otm.bi.AdresseOTMBiRepository;
+import fr.eni.demojpa.otm.bi.PersonneOTMBiRepository;
+import fr.eni.demojpa.otm.uni.Adresse;
 import fr.eni.demojpa.otm.uni.AdresseOTMURepository;
 import fr.eni.demojpa.otm.uni.PersonneOTMURepository;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class DemoJpaApplication {
@@ -101,6 +105,7 @@ public class DemoJpaApplication {
         };
     }
     @Bean
+    @Profile("demo")
     public CommandLineRunner demoOneToManyUni(PersonneOTMURepository persDAO,
                                               AdresseOTMURepository adresseDAO) {
         return (args) -> {
@@ -117,6 +122,16 @@ public class DemoJpaApplication {
             sophie.addAdresse(a4);
             persDAO.save(albert);
             persDAO.save(sophie);
+
+            //Tester l'attribut : orphan
+            albert.setAdresses(new ArrayList< Adresse>());
+            persDAO.save(albert);
+            System.out.println("Détachement des adresses de albert : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.otm.uni.Adresse adr : adresseDAO.findAll()) {
+                System.out.println(adr.toString());
+            }
+
             System.out.println("Liste des personnes : ");
             System.out.println("-------------------------------");
             for (fr.eni.demojpa.otm.uni.Personne personne : persDAO.findAll()) {
@@ -124,5 +139,42 @@ public class DemoJpaApplication {
             }
         };
     }
-
+    @Bean
+    public CommandLineRunner demoOneToManyBi(PersonneOTMBiRepository persDAO, AdresseOTMBiRepository
+            adresseDAO) {
+        return (args) -> {
+// save a few customers
+            fr.eni.demojpa.otm.bi.Adresse a1 = new fr.eni.demojpa.otm.bi.Adresse("44000", "Nantes");
+            fr.eni.demojpa.otm.bi.Adresse a2 = new fr.eni.demojpa.otm.bi.Adresse("33000", "Bordeaux");
+            fr.eni.demojpa.otm.bi.Adresse a3 = new fr.eni.demojpa.otm.bi.Adresse("29000", "Brest");
+            fr.eni.demojpa.otm.bi.Adresse a4 = new fr.eni.demojpa.otm.bi.Adresse("74000", "Chamonix");
+            fr.eni.demojpa.otm.bi.Personne albert = new fr.eni.demojpa.otm.bi.Personne("Dupontel", "Albert");
+            fr.eni.demojpa.otm.bi.Personne sophie = new fr.eni.demojpa.otm.bi.Personne("Marceau", "Sophie");
+            albert.addAdresse(a1);
+            albert.addAdresse(a2);
+            sophie.addAdresse(a3);
+            sophie.addAdresse(a4);
+            persDAO.save(albert);
+            persDAO.save(sophie);
+            System.out.println("Liste des personnes : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.otm.bi.Personne personne : persDAO.findAll()) {
+                System.out.println(personne.toString());
+            }
+            System.out.println("\nTestons la relation bidirectionnelle -- Affichage a2 et de sa personne");
+            System.out.println("-------------------------------");
+            System.out.println(a2);
+            System.out.println(a2.getPersonne());
+            // Tester l'attribut : orphan
+            albert.setAdresses(new ArrayList<fr.eni.demojpa.otm.bi.Adresse>());
+            persDAO.save(albert);
+            System.out.println("Détachement des adresses de albert : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.otm.bi.Adresse adr : adresseDAO.findAll()) {
+                System.out.println(adr.toString());
+            }
+        };
     }
+
+
+}

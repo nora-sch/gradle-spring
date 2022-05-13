@@ -1,4 +1,4 @@
-package fr.eni.demojpa.mto;
+package com.eni.demojpa.mto;
 
 
 import org.springframework.data.repository.CrudRepository;

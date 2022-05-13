@@ -1,10 +1,6 @@
-package fr.eni.demojpa.mto;
-
-import com.eni.demojpa.otm.uni.Adresse;
+package com.eni.demojpa.mto;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity(name = "personne_mto")
 @Table(name = "personne_mto")

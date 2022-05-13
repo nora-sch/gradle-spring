@@ -1,5 +1,6 @@
 package fr.eni.demojpa;
 
+import com.eni.demojpa.mto.Civilite;
 import com.eni.demojpa.otm.uni.Personne;
 import com.eni.demojpa.key1.PersonnePK1Repository;
 import com.eni.demojpa.key2.PersonnePK2Repository;
@@ -10,8 +11,11 @@ import com.eni.demojpa.otm.bi.PersonneOTMBiRepository;
 import com.eni.demojpa.otm.uni.Adresse;
 import com.eni.demojpa.otm.uni.AdresseOTMURepository;
 import com.eni.demojpa.otm.uni.PersonneOTMURepository;
-import fr.eni.demojpa.mto.CiviliteMTORepository;
-import fr.eni.demojpa.mto.PersonneMTORepository;
+import com.eni.demojpa.mto.CiviliteMTORepository;
+import com.eni.demojpa.mto.PersonneMTORepository;
+import fr.eni.demojpa.mtm.uni.Pays;
+import fr.eni.demojpa.mtm.uni.PaysMTMURepository;
+import fr.eni.demojpa.mtm.uni.PersonneMTMURepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +24,8 @@ import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class DemoJpaApplication {
@@ -180,15 +186,16 @@ public class DemoJpaApplication {
     }
 
     @Bean
+    @Profile("demo")
     public CommandLineRunner demoManyToOne(PersonneMTORepository persDAO, CiviliteMTORepository civiliteDAO) {
         return (args) -> {
-            fr.eni.demojpa.mto.Civilite c1 = new fr.eni.demojpa.mto.Civilite("M", "Monsieur");
-            fr.eni.demojpa.mto.Civilite c2 = new fr.eni.demojpa.mto.Civilite("Mme", "Madame");
+            Civilite c1 = new Civilite("M", "Monsieur");
+            Civilite c2 = new Civilite("Mme", "Madame");
             civiliteDAO.save(c1);
             civiliteDAO.save(c2);
-            fr.eni.demojpa.mto.Personne albert = new fr.eni.demojpa.mto.Personne("Dupontel", "Albert");
-            fr.eni.demojpa.mto.Personne jack = new fr.eni.demojpa.mto.Personne("Lemmon", "Jack");
-            fr.eni.demojpa.mto.Personne sophie = new fr.eni.demojpa.mto.Personne("Marceau", "Sophie");
+            com.eni.demojpa.mto.Personne albert = new com.eni.demojpa.mto.Personne("Dupontel", "Albert");
+            com.eni.demojpa.mto.Personne jack = new com.eni.demojpa.mto.Personne("Lemmon", "Jack");
+            com.eni.demojpa.mto.Personne sophie = new com.eni.demojpa.mto.Personne("Marceau", "Sophie");
             albert.setCivilite(c1);
             sophie.setCivilite(c2);
             jack.setCivilite(c1);
@@ -197,21 +204,57 @@ public class DemoJpaApplication {
             persDAO.save(jack);
             System.out.println("Liste des personnes : ");
             System.out.println("-------------------------------");
-            for (fr.eni.demojpa.mto.Personne personne : persDAO.findAll()) {
+            for (com.eni.demojpa.mto.Personne personne : persDAO.findAll()) {
                 System.out.println(personne.toString());
             }
             persDAO.delete(sophie);
             System.out.println("Liste des personnes après suppression de sophie : ");
             System.out.println("-------------------------------");
-            for (fr.eni.demojpa.mto.Personne personne : persDAO.findAll()) {
+            for (com.eni.demojpa.mto.Personne personne : persDAO.findAll()) {
                 System.out.println(personne.toString());
             }
             System.out.println("Liste des civilités : ");
             System.out.println("-------------------------------");
-            for (fr.eni.demojpa.mto.Civilite c : civiliteDAO.findAll()) {
+            for (Civilite c : civiliteDAO.findAll()) {
                 System.out.println(c.toString());
             }
         };
     }
+    @Bean
+    public CommandLineRunner demoManyToMany(PersonneMTMURepository persDAO, PaysMTMURepository paysDAO ) {
+        return (args) -> {
+            List<Pays> paysAVisiter = new ArrayList<>();
+            paysAVisiter.add(new fr.eni.demojpa.mtm.uni.Pays("fr", "France"));
+            paysAVisiter.add(new fr.eni.demojpa.mtm.uni.Pays("it", "Italie"));
+            paysAVisiter.add( new fr.eni.demojpa.mtm.uni.Pays("gr", "Grece"));
+            paysAVisiter.add( new fr.eni.demojpa.mtm.uni.Pays("es", "Espagne"));
+            paysAVisiter.add( new fr.eni.demojpa.mtm.uni.Pays("po", "Portugal"));
+            paysDAO.saveAll(paysAVisiter);
+            fr.eni.demojpa.mtm.uni.Personne albert = new fr.eni.demojpa.mtm.uni.Personne("Dupontel", "Albert");
+            fr.eni.demojpa.mtm.uni.Personne sophie = new fr.eni.demojpa.mtm.uni.Personne("Marceau", "Sophie");
+            albert.addPaysVisites(paysAVisiter.get(0));
+            albert.addPaysVisites(paysAVisiter.get(1));
+            albert.addPaysVisites(paysAVisiter.get(2));
+            albert.addPaysVisites(paysAVisiter.get(3));
+            sophie.addPaysVisites(paysAVisiter.get(2));
+            sophie.addPaysVisites(paysAVisiter.get(4));
+            persDAO.save(albert);
+            persDAO.save(sophie);
+            System.out.println("Liste des personnes : ");
+            System.out.println("-------------------------------");
+            for (fr.eni.demojpa.mtm.uni.Personne personne : persDAO.findAll()) {
+                System.out.println(personne.toString());
+            }
+            System.out.println("Suppression d'un pays pour albert");
+            System.out.println("-------------------------------");
+            albert.removePaysVisites(paysAVisiter.get(2));
+            persDAO.save(albert);
+            Optional<fr.eni.demojpa.mtm.uni.Personne> opt = persDAO.findById(Long.valueOf(albert.getId()));
+            if(opt.isPresent()) {
+                System.out.println(opt.get());
+            }
+        };
+    }
+
 
         }

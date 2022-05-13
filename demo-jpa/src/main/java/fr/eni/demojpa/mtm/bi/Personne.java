@@ -1,13 +1,11 @@
-package fr.eni.demojpa.mtm.uni;
-
-import com.eni.demojpa.mto.Civilite;
+package fr.eni.demojpa.mtm.bi;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "personne_mtm_u")
-@Table(name = "personne_mtm_u")
+@Entity(name = "personne_mtm_bi")
+@Table(name = "personne_mtm_bi")
 public class Personne {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +13,7 @@ public class Personne {
     private String nom;
     private String prenom;
     @ManyToMany(fetch = FetchType.EAGER) //pas cascade
-    @JoinTable(name="PersonnePays",
+    @JoinTable(name="PersonneBiPays",
             joinColumns= {@JoinColumn(name="personne_id")},
             inverseJoinColumns= {@JoinColumn(name="paysVisites_id")}
     )
@@ -44,8 +42,16 @@ public class Personne {
     public void setId(long id) {this.id = id;}
     public List<Pays> getPaysVisites() {return paysVisites;}
     public void setPaysVisites(List<Pays> paysVisites) {this.paysVisites = paysVisites;}
-    public void addPaysVisites(Pays a) {paysVisites.add(a);}
-    public void removePaysVisites(Pays p) {getPaysVisites().remove(p);}
+    public void addPaysVisites(Pays a) {
+        paysVisites.add(a);
+        //Gestion de la bidirectionnalité
+        a.addPersonne(this);
+    }
+    public void removePaysVisites(Pays p) {
+        getPaysVisites().remove(p);
+        //Gestion de la bidirectionnalité
+        p.getPersonnes().remove(this);
+    }
     @Override
     public String toString() {
         return "Personne [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", dateNaissance=" +
